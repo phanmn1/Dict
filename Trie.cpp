@@ -1,6 +1,8 @@
 #include <iostream> 
 #include <fstream> 
 #include <string.h> 
+#include <fstream>
+
 using namespace std; 
 const int ALSIZE = 26; 
 
@@ -26,7 +28,7 @@ TrieNode::TrieNode(char a) {
 class PrefixTree {
 public: 
   PrefixTree (); 
-  TrieNode createTree (); 
+  //  TrieNode createTree (); 
   void insertWord( char Word[], int a); 
   bool find ( char Word[]);
   void printTree (TrieNode *root, int level, char branch []);   
@@ -36,11 +38,11 @@ private:
 }; 
 
 PrefixTree::PrefixTree(){root = new TrieNode('\0');}
-TrieNode PrefixTree::createTree () {} 
+//TrieNode PrefixTree::createTree () {} 
 
 void PrefixTree::insertWord (char Word[], int number) {
   int offset = 97;  //offset for ascii value of characters 
-  int length = strlen(Word);
+  int length = strlen(Word); 
   char *letters = new char [length + 1];  
   strcpy (letters, Word); 
   TrieNode* currentNode = root; 
@@ -86,15 +88,43 @@ bool PrefixTree:: find (char Word[]) {
 
 }
 
+void initialize (char name[], int &age) {
+  name[0] = '\0'; 
+  age = 0; 
+}
+
+
+
 int main () {
 
+
+  ifstream file_in;  //reading from files
+  file_in.open("test.txt");  
+
   PrefixTree tree; 
-  char s1[200] = "test"; 
-  char s2[200] = "test2"; 
-  
- tree.insertWord(s1, 123); 
- tree.insertWord (s2, 345); 
-  if( tree.find(s2)) 
+  char s1 [200] = "testfile"; 
+  char name[200];  
+  int age; 
+  initialize(name, age);  
+ 
+  if (file_in) {
+    while (file_in >> name && !file_in.eof()) {
+
+	//file_in >> array[i].name; 
+        file_in >> age;
+        
+      	cout <<"Name: " << name <<endl; 
+	cout <<"Age:" << age << endl; 
+        tree.insertWord(name, age);
+
+                                     }
+  }
+ 
+       
+ 
+ 
+ 
+  if( tree.find(s1)) 
    cout <<"Found" <<endl;
   else 
     cout <<"Not found"<<endl;   
