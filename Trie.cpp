@@ -1,7 +1,7 @@
 #include <iostream>
 #include <fstream>
 #include <string.h>
-#include <fstream>
+
 
 using namespace std;
 const int ALSIZE = 26;
