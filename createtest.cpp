@@ -12,12 +12,22 @@ void initialize (char array [], int &value) {
 
 int main () {
 
+   char FILENAME_OPEN [200];
+   char FILENAME_WRITE [200];  
+   cout <<"File name to open: "; 
+   cin.get(FILENAME_OPEN, 200, '\n'); 
+   cin.ignore(100, '\n'); 
+   
+   cout <<endl<<"Filename to store: ";  
+   cin.get(FILENAME_WRITE, 200, '\n'); 
+   cin.ignore(100, '\n'); 
+   
   ifstream file_in;
   ofstream file_out; 
   
  
-  file_in.open("IspelDictionary/english.1"); 
-  file_out.open ("alphabet_test.txt");
+  file_in.open(FILENAME_OPEN); 
+  file_out.open (FILENAME_WRITE);
   /* initialize random seed: */
   srand (time(NULL));
 
@@ -31,8 +41,6 @@ int main () {
       random_int = rand() % 100000000; 
       file_out << alphabet <<endl;  
       file_out << random_int<<endl;
-      cout << alphabet <<endl; 
-      cout << random_int <<endl;
       initialize(alphabet, random_int);
           
     } 

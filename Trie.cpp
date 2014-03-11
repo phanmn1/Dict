@@ -111,12 +111,20 @@ void initialize (char name[], int &age) {
 
 
 int main () {
+   
+
+   char FILENAME [200]; 
+   cout <<"File name to test : " << endl; 
+   cin.get(FILENAME, 200, '\n'); 
+   cin.ignore(100, '\n'); 
+
     clock_t t1,t2;
     t1=clock();
     
+   
 
   ifstream file_in; //reading from files
-  file_in.open("alphabet_test.txt");
+  file_in.open(FILENAME);
 
   PrefixTree tree;
   //char s1 [200] = "testfile2";
@@ -144,7 +152,7 @@ int main () {
 
 
   file_in.close(); 
-  file_in.open("alphabet_test.txt"); 
+  file_in.open(FILENAME); 
   
   if (file_in) {
     while (file_in >> name && !file_in.eof()) {
