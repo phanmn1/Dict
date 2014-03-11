@@ -30,22 +30,22 @@ for (int i = 0; i < SIZE; ++i) {
 
 
 for (int i = 0; i < SIZE; i++) {
-   if (file_in) {
+  //  if (file_in) {
       
         
-     if (file_in >> array[i].name && !file_in.eof()) {
+//      if (file_in >> array[i].name && !file_in.eof()) {
 
-	//file_in >> array[i].name; 
-        file_in >> array[i].age;
+// 	//file_in >> array[i].name; 
+//         file_in >> array[i].age;
         
 	 
-	cout <<"Name[" << i << "]: " << array[i].name <<endl; 
-	cout <<"Age[" << i << "]:" << array[i].age << endl; 
-                                     }
+// 	cout <<"Name[" << i << "]: " << array[i].name <<endl; 
+// 	cout <<"Age[" << i << "]:" << array[i].age << endl; 
+//                                      }
 
-                 }
+//                  }
        
-} 
+// } 
 
 
 
