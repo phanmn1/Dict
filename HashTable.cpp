@@ -4,7 +4,7 @@
 #include <fstream>
 using namespace std; 
 
-const int SIZE = 100000; 
+ 
 
 struct node {
   int value; 
@@ -14,7 +14,7 @@ struct node {
 
 class hashtable {
   public: 
-     hashtable();
+     hashtable(int SIZE);
      void insert (char array [], int a);  
      //int table (int SIZE);  
      int hashfunction(char array[]);
@@ -25,7 +25,7 @@ class hashtable {
      int tablesize; 
 };
      
-hashtable::hashtable() { 
+hashtable::hashtable(int SIZE) { 
         
     
     hashTable = new node*[SIZE];
@@ -40,6 +40,7 @@ int hashtable::hashfunction (char array []) {
   int hashvalue = 0; 
   for (int i = 0; i < strlen(array); ++i) {
      hashvalue += array[i]; 
+      
   }
   return hashvalue % tablesize; 
 }
@@ -91,19 +92,26 @@ void initialize (char name[], int &age) {
 int main () {
  
 
-   char FILENAME [200]; 
+   char FILENAME [200] = "alphabet_testMaster.txt";  
+   int SIZE = 2000; 
+  /*
    cout <<"File name to test : " << endl; 
    cin.get(FILENAME, 200, '\n'); 
    cin.ignore(100, '\n'); 
+   cout <<"Size of Hash table : "; 
+   cin >> SIZE; 
+   cin.ignore(); 
+  */ 
+   
 
   
-  clock_t t1,t2;
-    t1=clock();
+  int start_s=clock();
+	// the code you wish to time goes here
 
   ifstream file_in; //reading from files
   file_in.open(FILENAME);
 
-  hashtable hash;
+  hashtable hash(SIZE);
   //char s1 [200] = "testfile2";
   char name[200];
   int age;
@@ -141,10 +149,8 @@ int main () {
      initialize(name, age); 
    }
 
-   //code goes here
-    t2=clock();
-    float diff ((float)t2-(float)t1);
-    cout<<diff<<endl;
+   int stop_s=clock();
+    cout << "time: " << (stop_s-start_s)/double(CLOCKS_PER_SEC)*1000 << endl;
 
 
 return 0; 

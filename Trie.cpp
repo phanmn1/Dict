@@ -113,13 +113,14 @@ void initialize (char name[], int &age) {
 int main () {
    
 
-   char FILENAME [200]; 
+   char FILENAME [200] = "alphabet_testMaster.txt"; 
+   /* 
    cout <<"File name to test : " << endl; 
    cin.get(FILENAME, 200, '\n'); 
    cin.ignore(100, '\n'); 
+*/
+    int start_s=clock();
 
-    clock_t t1,t2;
-    t1=clock();
     
    
 
@@ -168,9 +169,8 @@ int main () {
    }
  
    //code goes here
-    t2=clock();
-    float diff ((float)t2-(float)t1);
-    cout<<diff<<endl;
+    int stop_s=clock();
+    cout << "time: " << (stop_s-start_s)/double(CLOCKS_PER_SEC)*1000 << endl;
     
 /* 
   if( tree.find(s1))
